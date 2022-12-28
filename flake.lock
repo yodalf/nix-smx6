@@ -1,0 +1,44 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1671883564,
+        "narHash": "sha256-C15oAtyupmLB3coZY7qzEHXjhtUx/+77olVdqVMruAg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "dac57a4eccf1442e8bf4030df6fcbb55883cb682",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-22.11",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "vendor-kernel": "vendor-kernel"
+      }
+    },
+    "vendor-kernel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1672184378,
+        "narHash": "sha256-F7AFuw5Z4fJBNQ2eDibxXRgBnhSpDTem2pgiHHmPf0U=",
+        "owner": "yodalf",
+        "repo": "linux-smx6_5.8.18",
+        "rev": "b7b42b90459da5f997dd314084b4941583e4e643",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yodalf",
+        "ref": "main",
+        "repo": "linux-smx6_5.8.18",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
