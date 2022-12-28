@@ -34,7 +34,7 @@
     wget
     git
     adoptopenjdk-jre-bin
-    #openjdk11_headless
+    btop
   ];
 
   # Enable ssh on boot
@@ -52,4 +52,5 @@
       workstation = true;
     };
   };
+
 }

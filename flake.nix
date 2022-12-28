@@ -1,9 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    #nixpkgs.url = "nixpkgs/nixos-22.11";
     vendor-kernel = {
       url = "github:yodalf/linux-smx6_5.8.18/main";
-      #url = "github:yodalf/linux-smx6_5.8.18?ref=b7b42b90459da5f997dd314084b4941583e4e643";
       #url = "git+https://gitlab.kontron.com/imx/linux-imx.git?ref=samx6i_5.8.18";
       flake = false;
     };
@@ -15,7 +15,6 @@
       modules = [
         { nixpkgs.overlays = [ self.overlay ]; }
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image.nix"
-        #./base.nix
         ./boot.nix
         ./configuration.nix
       ];
