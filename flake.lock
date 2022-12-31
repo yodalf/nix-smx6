@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1672080458,
-        "narHash": "sha256-Ukjn8YUwZevxDPaVUmTx2sf9bCcIJSasmLz+xjGBKrs=",
+        "lastModified": 1672350804,
+        "narHash": "sha256-jo6zkiCabUBn3ObuKXHGqqORUMH27gYDIFFfLq5P4wg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1eb875e811dd59e21e77f6337f2c1592889b48b3",
+        "rev": "677ed08a50931e38382dbef01cba08a8f7eac8f6",
         "type": "github"
       },
       "original": {
@@ -24,11 +24,11 @@
     "vendor-kernel": {
       "flake": false,
       "locked": {
-        "lastModified": 1672184378,
-        "narHash": "sha256-F7AFuw5Z4fJBNQ2eDibxXRgBnhSpDTem2pgiHHmPf0U=",
+        "lastModified": 1672397993,
+        "narHash": "sha256-7O4FFtYl52jbTKph1HMPmYOrH6Sa14o8wcWzLpgVVpM=",
         "owner": "yodalf",
         "repo": "linux-smx6_5.8.18",
-        "rev": "b7b42b90459da5f997dd314084b4941583e4e643",
+        "rev": "4eb7bb4e143bc771c68322ac880a78cc9734eb2d",
         "type": "github"
       },
       "original": {

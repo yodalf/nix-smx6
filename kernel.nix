@@ -26,12 +26,12 @@ in buildLinux (args // {
   defconfig = "coresense_defconfig";
   #defconfig = "kontron_samx6i_defconfig";
 
-  structuredExtraConfig = with lib.kernel; {
-  };
+  #structuredExtraConfig = with lib.kernel; {
+  #};
 
-  extraMeta = {
-    description = "Linux kernel for Kontron's SMX6 board";
-    platforms = [ "armv7l-linux" ];
-    hydraPlatforms = [ "armv7l-linux" ];
-  };
+  #extraMeta = {
+  #  description = "Linux kernel for Kontron's SMX6 board";
+  #  platforms = [ "armv7l-linux" ];
+  #  hydraPlatforms = [ "armv7l-linux" ];
+  #};
 } // (args.argsOverride or { }))

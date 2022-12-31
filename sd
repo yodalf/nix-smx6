@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+    echo "Missing device ..."
+    exit 1
+fi
+
+D=$1
+umount ${D}1 &> /dev/null
+umount ${D}2 &> /dev/null
+
+zstdcat ./result/sd-image/nixos-sd-image-23.05.20221228.e182da8-armv7l-linux-coresense.img.zst | sudo dd of=${D} bs=10M status=progress oflag=sync
+
