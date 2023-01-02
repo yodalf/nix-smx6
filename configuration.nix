@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 {
 
-  # Remove ZFS
-  #boot.supportedFilesystems = lib.mkForce [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" "ext4" "vfat" ];
 
   networking.hostName = "coresense";
 
@@ -35,14 +33,24 @@
 
   # Packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    #vim
+    vim
     #wget
     #git
-    #adoptopenjdk-jre-bin
+    adoptopenjdk-jre-bin
     btop
-    #hdparm
+    usbutils
+    hdparm
     #gcc
   ];
+
+  #services.xserver = {
+  #  enable = true;
+  #  #desktopManager = {
+  #  #  xterm.enable = false;
+  #  #  xfce.enable = true;
+  #  #};
+  #  #displayManager.defaultSession = "xfce";
+  #};
 
   # Enable ssh on boot
   services.openssh = {

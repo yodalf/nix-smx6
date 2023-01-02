@@ -9,5 +9,5 @@ D=$1
 umount ${D}1 &> /dev/null
 umount ${D}2 &> /dev/null
 
-zstdcat ./result/sd-image/nixos-sd-image-23.05.20221229.677ed08-armv7l-linux.img.zst | sudo dd of=${D} bs=10M status=progress oflag=sync
+sudo dd if=./result/iso/nixos.iso of=${D} bs=10M status=progress oflag=sync
 

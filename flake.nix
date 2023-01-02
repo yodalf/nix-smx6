@@ -3,8 +3,8 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     #nixpkgs.url = "nixpkgs/nixos-22.11";
     vendor-kernel = {
-      url = "github:yodalf/linux-smx6_5.8.18/main";
-      #url = "github:yodalf/linux-smx6_5.8.18/?ref=1d56ce00236f73277ef610930257f751c5159b2f";
+      #url = "github:yodalf/linux-smx6_5.8.18/main";
+      url = "github:yodalf/linux-smx6_5.8.18/?ref=2b088678ee3b5f3e421c613dda1559e";
       #url = "git+https://gitlab.kontron.com/imx/linux-imx.git?ref=samx6i_5.8.18";
       flake = false;
     };
@@ -14,8 +14,8 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; overlays = [ self.overlay ]; };
-      modules = [
-        { nixpkgs.overlays = [ self.overlay ]; }
+      modules = [ 
+        {nixpkgs.overlays = [ self.overlay ]; }
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image.nix"
         #"${nixpkgs}/nixos/modules/installer/cd-dvd/iso-image.nix"
         #./my-sd-image.nix
@@ -34,19 +34,24 @@
     in
     {
       # Obtain a kernel from the vendor-kernel source
+      #overlay = final: prev: {
+      #  # Fix missing AHCI driver (and any other) in intrd
+      #  #makeModulesClosure = x:
+      #  #  prev.makeModulesClosure (x // { allowMissing = true; });
+      #    
+      #  linuxPackages_smx6 = final.recurseIntoAttrs (  final.linuxPackagesFor ((final.callPackage ./kernel.nix { inherit vendor-kernel; }).override { patches = [ ]; }) );
+      #};
       overlay = final: prev: {
         # Fix missing AHCI driver (and any other) in intrd
         makeModulesClosure = x:
           prev.makeModulesClosure (x // { allowMissing = true; });
-          
-        linuxPackages_smx6 = final.linuxPackagesFor ((final.callPackage ./kernel.nix { inherit vendor-kernel; }).override { patches = []; });
       };
 
       # Save the kernel packages in our pkgs
-      legacyPackages.${system} =
-        {
-          inherit (pkgs.pkgsCross.armv7l.linux) linuxPackages_smx6;
-        };
+      #legacyPackages.${system} =
+      #  {
+      #    inherit (pkgs.pkgsCross.armv7l.linux) linuxPackages_smx6;
+      #  };
 
       nixosConfigurations = {
         smx6 = nixpkgs.lib.nixosSystem {
@@ -63,8 +68,8 @@
 
       
       images = {
-        smx6 = self.nixosConfigurations.smx6.config.system.build.sdImage;
-        #iso = self.nixosConfigurations.smx6.config.system.build.isoImage;
+        sd = self.nixosConfigurations.smx6.config.system.build.sdImage;
+        iso = self.nixosConfigurations.smx6.config.system.build.isoImage;
       };
 ######
       X =

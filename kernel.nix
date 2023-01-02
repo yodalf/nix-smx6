@@ -1,7 +1,7 @@
 { lib
 , buildLinux
 , vendor-kernel
-, ... } @ args:
+, kmod, ... } @ args:
 
 let
   kernelVersion = rec {
@@ -17,7 +17,7 @@ let
   modDirVersion = "${kernelVersion.string}";
 in buildLinux (args // {
   inherit modDirVersion;
-  version = "${modDirVersion}-smx6";
+  version = "${modDirVersion}-kontron";
 
   src = vendor-kernel;
 
@@ -26,12 +26,16 @@ in buildLinux (args // {
   defconfig = "coresense_defconfig";
   #defconfig = "kontron_samx6i_defconfig";
 
-  #structuredExtraConfig = with lib.kernel; {
-  #};
+  structuredExtraConfig = with lib.kernel; {
+    NLS_CODEPAGE_437 = lib.mkForce yes;
+    NLS_ISO8859_1 = lib.mkForce yes;
+    BLK_DEV_LOOP = lib.mkForce yes;
+    ISO9660_FS = lib.mkForce yes;
+  };
 
-  #extraMeta = {
-  #  description = "Linux kernel for Kontron's SMX6 board";
-  #  platforms = [ "armv7l-linux" ];
-  #  hydraPlatforms = [ "armv7l-linux" ];
-  #};
+  extraMeta = {
+    description = "Linux kernel for Kontron's SMX6 board";
+    platforms = [ "armv7l-linux" ];
+    #hydraPlatforms = [ "armv7l-linux" ];
+  };
 } // (args.argsOverride or { }))

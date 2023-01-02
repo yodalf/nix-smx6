@@ -24,16 +24,16 @@
     "vendor-kernel": {
       "flake": false,
       "locked": {
-        "lastModified": 1672397993,
-        "narHash": "sha256-7O4FFtYl52jbTKph1HMPmYOrH6Sa14o8wcWzLpgVVpM=",
+        "lastModified": 1672504600,
+        "narHash": "sha256-JXUA8k6oUGCqjhlwa9N9T3Kb5YIJR5I1uVL0Hir5+Aw=",
         "owner": "yodalf",
         "repo": "linux-smx6_5.8.18",
-        "rev": "4eb7bb4e143bc771c68322ac880a78cc9734eb2d",
+        "rev": "2b088678ee3b5f3e421c613dda1559e442b9e6b3",
         "type": "github"
       },
       "original": {
         "owner": "yodalf",
-        "ref": "main",
+        "ref": "2b088678ee3b5f3e421c613dda1559e",
         "repo": "linux-smx6_5.8.18",
         "type": "github"
       }
